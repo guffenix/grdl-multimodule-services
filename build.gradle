@@ -1,5 +1,7 @@
 subprojects {
   apply plugin: 'application'
+  version = '1.0'
+  group = 'solutions.mundovirtual.multiproject'
 
   repositories {
       mavenCentral()
@@ -14,4 +16,22 @@ subprojects {
       useJUnitPlatform()
   }
 
+}
+
+project(':web'){
+  dependencies{
+    implementation project(':services')
+  }
+}
+
+project(':services'){
+  dependencies{
+    implementation project(':data')
+  }
+}
+
+project(':data'){
+  dependencies{
+    implementation project(':integration')
+  }
 }
